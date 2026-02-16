@@ -8,31 +8,31 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <BaseLayout title="Home">
-  <section style="margin-bottom: 4rem;">
-    <h1 style="font-size: 2rem; font-weight: 600; margin-bottom: 1rem;">Welcome</h1>
-    <p style="font-size: 1.125rem; color: #525252;">
-      A collection of reflections on religion, philosophy, and intellectual topics.
-    </p>
-  </section>
-
   <section>
-    <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">Recent Posts</h2>
+    <h1 style="font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem;">
+      Reflections
+    </h1>
+    <p style="font-size: 1rem; color: #737373; margin-bottom: 3rem;">
+      On religion, philosophy, and ideas worth thinking about.
+    </p>
     
     {posts.map((post) => (
-      <article class="post-list-item">
-        <h2>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-        </h2>
-        <p class="post-meta">
+      <article style="margin-bottom: 2.5rem;">
+        <a href={`/blog/${post.slug}/`} style="font-size: 1.25rem; font-weight: 500; text-decoration: none;">
+          {post.data.title}
+        </a>
+        <p class="post-meta" style="margin-top: 0.25rem; margin-bottom: 0.5rem;">
           <time datetime={post.data.pubDate.toISOString()}>
             {post.data.pubDate.toLocaleDateString('en-US', {
               year: 'numeric',
-              month: 'long',
+              month: 'short',
               day: 'numeric',
             })}
           </time>
         </p>
-        <p>{post.data.description}</p>
+        <p style="font-size: 1rem; color: #525252; line-height: 1.6;">
+          {post.data.description}
+        </p>
       </article>
     ))}
   </section>
