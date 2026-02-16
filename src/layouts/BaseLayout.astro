@@ -1,0 +1,39 @@
+---
+import ThemeToggle from '../components/ThemeToggle';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title ? `${title} | Reflections` : 'Reflections'}</title>
+    <meta name="description" content="Reflections on religion, philosophy, and intellectual topics." />
+  </head>
+  <body>
+    <header>
+      <nav style="display: flex; justify-content: space-between; align-items: center;">
+        <a href="/" style="text-decoration: none; font-weight: 600; font-size: 1.125rem;">
+          Reflections
+        </a>
+        <ThemeToggle client:load />
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <p style="text-align: center; font-size: 0.875rem; color: #737373;">
+        © {new Date().getFullYear()} Reflections. All rights reserved.
+      </p>
+    </footer>
+  </body>
+</html>
